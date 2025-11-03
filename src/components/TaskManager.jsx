@@ -158,7 +158,10 @@ const TaskManager = () => {
       {/* Task stats */}
       <div className="mt-6 text-sm text-gray-500 dark:text-gray-400">
         <p>
-          {tasks.filter((task) => !task.completed).length} tasks remaining
+          {(() => {
+            const remaining = tasks.filter((task) => !task.completed).length;
+            return `${remaining} ${remaining === 1 ? 'task' : 'tasks'} remaining`;
+          })()}
         </p>
       </div>
     </div>
